@@ -24,10 +24,30 @@ class Menu {
         ' );
     }
 
+    /**
+     * Page for "Registration" menu
+     */
     public function registration_page() {
         include_once __DIR__ . '/pages/register-page.php';
     }
+
+    /**
+     * Page for "Options" menu
+     */
+    public function options_page() {
+        echo "Hello options";
+    }
+
+    /**
+     * Page for "Settings" menu
+     */
+    public function settings_page() {
+        include_once __DIR__ . '/pages/settings-page.php';
+    }
     
+    /**
+     * Register fields and sections
+     */
     public function vidiow_settings_fields() {
 
         // Created variables to make the things clearer
@@ -169,6 +189,9 @@ class Menu {
 
     }
 
+    /**
+     * Print the registered fields
+     */
     public function print_settings_field( $field ) {
 
         $value = get_option( $field['id'] );
@@ -346,7 +369,7 @@ class Menu {
 				break;
                 
 			case 'textarea':
-				printf( '<textarea class="regular-text" name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50"> %3$s </textarea>',
+				printf( '<textarea class="regular-text" name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>',
 					$field['id'],
 					isset( $field['placeholder'] ) ? $field['placeholder'] : '',
 					$value
@@ -366,14 +389,6 @@ class Menu {
     // Custom sanitization function for a checkbox field
     public function sanitize_checkbox( $value ) {
         return 'on' === $value ? 'checked' : '';
-    }
-
-    public function options_page() {
-        echo "hello options";
-    }
-
-    public function settings_page() {
-        include_once __DIR__ . '/pages/settings-page.php';
     }
 
 }
